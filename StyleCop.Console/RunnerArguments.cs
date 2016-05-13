@@ -35,5 +35,10 @@
         {
             get { return this["output-csv"] ?? this["c"]; }
         }
+
+        public bool NoConsoleOutput
+        {
+            get { return (this["no-console"] ?? this["x"]) != null; }
+        }
     }
 }

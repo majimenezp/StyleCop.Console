@@ -13,6 +13,7 @@ namespace StyleCop.Console
     {
         private static ConcurrentBag<StyleCopViolationOutput> ruleViolations;
         private static int _encounteredViolations;
+        private static bool noConsoleOutput = false;
 
         public static int Main(string[] args)
         {
@@ -54,6 +55,7 @@ namespace StyleCop.Console
 
 
                 var searchOption = arguments.NotRecursive ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories;
+                noConsoleOutput = arguments.NoConsoleOutput;
 
                 var projectPath = arguments.ProjectPath;
 
@@ -117,8 +119,11 @@ namespace StyleCop.Console
             _encounteredViolations++;
             StyleCopViolationOutput violationFounded = new StyleCopViolationOutput(e);
             ruleViolations.Add(violationFounded);
-            WriteLineViolationMessage(string.Format("  Line {0}: {1} ({2})", e.LineNumber, e.Message,
-                e.Violation.Rule.CheckId));
+            if (!noConsoleOutput)
+            {
+                WriteLineViolationMessage(string.Format("  Line {0}: {1} ({2})", e.LineNumber, e.Message, e.Violation.Rule.CheckId));
+            }
+
         }
 
         private static void WriteLineViolationMessage(string message)
