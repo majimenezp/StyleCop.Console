@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ServiceStack.Text, Version=4.0.56.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.0.56\lib\net40\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="StyleCop, Version=4.7.1000.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\StyleCop.dll</HintPath>
@@ -55,12 +59,14 @@
   <ItemGroup>
     <Compile Include="CommandLineArguments.cs" />
     <Compile Include="ExitCode.cs" />
+    <Compile Include="Output\StyleCopViolationOutput.cs" />
     <Compile Include="RunnerArguments.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Settings.StyleCop">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

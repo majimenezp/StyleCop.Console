@@ -26,5 +26,14 @@
         {
             get { return this["settings-location"] ?? this["s"]; }
         }
+
+        public string OutFile
+        {
+            get { return this["output-xml"] ?? this["o"]; }
+        }
+        public string OutCSV
+        {
+            get { return this["output-csv"] ?? this["c"]; }
+        }
     }
 }
